@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "654835673a880300",
+        "id": "31082fcbfa035c32",
         "type": "tabs",
         "children": [
           {
-            "id": "d230179321f3723a",
+            "id": "7bd380d1f115b583",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -161,7 +161,7 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "d230179321f3723a",
+  "active": "83c062219965df20",
   "lastOpenFiles": [
     "docs/listings.json",
     "docs/search.json",
@@ -171,14 +171,14 @@
     "docs/site_libs/quarto-search/quarto-search.js",
     "docs/site_libs/quarto-search/fuse.min.js",
     "docs/site_libs/quarto-search/autocomplete.umd.js",
-    "docs/site_libs/quarto-listing/quarto-listing.js",
-    "docs/site_libs/quarto-listing/list.min.js",
     "docs/site_libs/quarto-nav/quarto-nav.js",
+    "docs/site_libs/quarto-nav/headroom.min.js",
     "docs/site_libs/quarto-html/tippy.umd.min.js",
+    "docs/site_libs/quarto-html/quarto.js",
+    "posts/xavier-initialization.md",
     "index.md",
     "README.md",
     "posts/index.md",
-    "posts/xavier-initialization.md",
     "_site/images/logo.png",
     "images/logo.png",
     "logo.png",

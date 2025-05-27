@@ -3,7 +3,3 @@ title: Posts
 format: html
 listing: "true"
 ---
-
-# Posts
-
-- [Why Neural Networks Forget](xavier-initialization.qmd)
