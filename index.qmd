@@ -7,7 +7,7 @@ listing:
   contents: posts
   type: default
   sort: "date desc"
-  categories: true
+  categories: false
   fields: [title, date, description]
 ---
 
