@@ -11,14 +11,10 @@
             "id": "f37a78b2e8223e9f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "index.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "index"
+              "title": "Nueva pestaña"
             }
           }
         ]
@@ -167,21 +163,22 @@
   },
   "active": "f37a78b2e8223e9f",
   "lastOpenFiles": [
-    "site_libs/bootstrap/bootstrap-icons.woff",
-    "site_libs/bootstrap/bootstrap.min.js",
-    "site_libs/bootstrap/bootstrap-icons.css",
-    "site_libs/bootstrap/bootstrap-bb49951d50c4a7e8d052f44ae1610a34.min.css",
-    "site_libs/bootstrap",
-    "site_libs/quarto-html/tabsets/tabsets.js",
-    "site_libs/quarto-html/tippy.umd.min.js",
-    "site_libs/quarto-html/popper.min.js",
-    "site_libs/quarto-html/quarto.js",
-    "site_libs/quarto-html/tippy.css",
-    "site_libs/quarto-html/tabsets",
-    "posts/xavier-initialization.md",
+    "listings.json",
+    "search.json",
+    "posts/xavier-initialization.html",
+    "posts/xavier-initialization_files/mediabag",
+    "posts/xavier-initialization_files",
+    "index-listing.json",
+    "site_libs/quarto-listing/quarto-listing.js",
+    "site_libs/quarto-listing/list.min.js",
+    "site_libs/quarto-listing",
+    "index.html",
+    "index_files/mediabag",
     "index.md",
     "_site/images/logo.png",
+    "docs/images/logo.png",
     "images/logo.png",
+    "posts/xavier-initialization.md",
     "logo.png",
     "posts/xavier-initialization.qmd.md",
     "posts/Xavier Initialization.md"
