@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "31082fcbfa035c32",
+        "id": "caedb04ad7a2e0cb",
         "type": "tabs",
         "children": [
           {
-            "id": "7bd380d1f115b583",
+            "id": "460c1c930cbc69bb",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -161,26 +161,27 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "83c062219965df20",
+  "active": "460c1c930cbc69bb",
   "lastOpenFiles": [
-    "docs/listings.json",
-    "docs/search.json",
-    "docs/images/logo.png",
-    "docs/images",
-    "docs/site_libs/quarto-html/tabsets/tabsets.js",
-    "docs/site_libs/quarto-search/quarto-search.js",
-    "docs/site_libs/quarto-search/fuse.min.js",
-    "docs/site_libs/quarto-search/autocomplete.umd.js",
-    "docs/site_libs/quarto-nav/quarto-nav.js",
-    "docs/site_libs/quarto-nav/headroom.min.js",
-    "docs/site_libs/quarto-html/tippy.umd.min.js",
-    "docs/site_libs/quarto-html/quarto.js",
+    "index_files/mediabag",
+    "index_files",
+    "site_libs/bootstrap/bootstrap.min.js",
+    "site_libs/bootstrap/bootstrap-icons.woff",
+    "site_libs/bootstrap/bootstrap-icons.css",
+    "site_libs/bootstrap/bootstrap-bb49951d50c4a7e8d052f44ae1610a34.min.css",
+    "site_libs/bootstrap",
+    "site_libs/quarto-html/tabsets/tabsets.js",
+    "site_libs/quarto-html/tippy.css",
+    "site_libs/quarto-html/tippy.umd.min.js",
+    "site_libs/quarto-html/quarto.js",
     "posts/xavier-initialization.md",
+    "images/logo.png",
+    "images/ChatGPT Image 27 may 2025, 20_45_32.png",
+    "docs/images/logo.png",
     "index.md",
     "README.md",
     "posts/index.md",
     "_site/images/logo.png",
-    "images/logo.png",
     "logo.png",
     "posts/xavier-initialization.qmd.md",
     "posts/Xavier Initialization.md"

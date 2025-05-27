@@ -4,6 +4,7 @@ title: "Why Neural Networks Forget:"
 description: "The Vanishing Gradient Problem Explained"
 format: html
 categories: [deep-learning, 🟡medium]
+title-block-banner: false
 ---
 
 # Why Neural Networks Forget: The Vanishing Gradient Problem Explained 
