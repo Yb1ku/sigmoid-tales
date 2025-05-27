@@ -53,7 +53,7 @@ $$
 
 ### A balanced solution 
 
-We now hace two desired conditions: 
+We now have two desired conditions: 
 - $n_i \cdot \mathrm{Var}[w_i] \approx 1$ 
 - $n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1$ 
 If $n_{i}=n_{i+1}$, both are satisfied. When not, Glorot and Bengio propose a compromise: 
