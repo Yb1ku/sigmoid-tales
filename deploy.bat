@@ -1,26 +1,31 @@
 @echo off
 cd /d "%~dp0"
 
-echo Limpiando y renderizando el sitio completo con Quarto...
+echo 🔄 Renderizando sitio con Quarto...
 quarto render --output-dir docs
-
 IF %ERRORLEVEL% NEQ 0 (
-    echo ❌ ERROR: Fallo al renderizar con Quarto. Abortando.
+    echo ❌ Error al renderizar con Quarto. Abortando.
     pause
     exit /b %ERRORLEVEL%
 )
 
-echo Sitio renderizado correctamente.
+REM Comprobamos si hay cambios sin guardar
+git diff --quiet
+IF ERRORLEVEL 1 (
+    echo 💾 Cambios detectados. Haciendo commit temporal...
+    git add .
+    git commit -m "Auto-commit before pull (render update)"
+)
 
-echo Haciendo pull con rebase...
-git pull origin main --rebase
+echo 🔃 Haciendo pull con rebase...
+git pull --rebase origin main
 
-echo Añadiendo archivos modificados...
+echo 📤 Añadiendo últimos cambios...
 git add .
 
-set /p COMMIT_MSG=Introduce un mensaje para el commit: 
+set /p COMMIT_MSG=Introduce un mensaje para el commit final: 
 git commit -m "%COMMIT_MSG%"
 git push origin main
 
-echo Publicacion completada. Tu web esta actualizada en GitHub Pages.
+echo 🟢 Publicación completada.
 pause
