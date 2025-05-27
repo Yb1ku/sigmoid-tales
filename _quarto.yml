@@ -10,6 +10,8 @@ website:
         file: index.qmd
       - text: About
         file: about.qmd
+      - text: Posts 
+        file: posts/index.qmd
 
 format:
   html:

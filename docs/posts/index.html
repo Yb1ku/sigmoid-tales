@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>The Sigmoid Tales</title>
+<title>Posts – The Sigmoid Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bb49951d50c4a7e8d052f44ae1610a34.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bb49951d50c4a7e8d052f44ae1610a34.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -79,9 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -138,7 +138,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">The Sigmoid Tales</span>
     </a>
   </div>
@@ -149,15 +149,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts/index.html"> 
+    <a class="nav-link active" href="../posts/index.html" aria-current="page"> 
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
@@ -176,16 +176,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#recent-articles" id="toc-recent-articles" class="nav-link active" data-scroll-target="#recent-articles">📚 Recent articles</a></li>
+  <li><a href="#posts" id="toc-posts" class="nav-link active" data-scroll-target="#posts">Posts</a></li>
   </ul>
 </nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="JUYwJTlGJTlGJUExbWVkaXVt">🟡medium <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGVlcC1sZWFybmluZw==">deep-learning <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Sigmoid Tales</h1>
+<h1 class="title">Posts</h1>
 </div>
 
 
@@ -202,24 +202,11 @@ window.Quarto = {
 </header>
 
 
-<div style="text-align: center;">
-<p><img src="images/logo.png" alt="Sigmoid Tales Logo" width="160"></p>
-</div>
-<p>Welcome to the Sigmoid Tales — a curated collection of technical yet accessible essays on Machine Learning &amp; Deep Learning. Whether you’re just starting or brushing up on foundational concepts, this repository aims to clarify complex ideas through clear writing, visual intuition and well-grounded mathematics.</p>
-<blockquote class="blockquote">
-<p>🚧 <strong>Work in Progress</strong> This project is a living document. New articles will be added over time. ## Overview of the project</p>
-</blockquote>
-<p>The Sigmoid Tales is a series of short essays on key ML &amp; DL topics. the main goal is to demystify the core concepts and techniques of the field, explaining not only the how, but also the why. This collection also aims to bridge the gap between hard mathematics, complex theoretical concepts and practical applications. Each “tale” focuses on a specific concept, covering most of the areas in Machine Learning. They are labeled by colors, each one indicating the level needed to understand the content:</p>
+<section id="posts" class="level1">
+<h1>Posts</h1>
 <ul>
-<li>🟢 <strong>Beginner</strong>: Usually intuitions and very basic concepts.</li>
-<li>🟡 <strong>Medium</strong>: A bit more advanced, but still basic concepts.</li>
-<li>🟠 <strong>Medium/Advanced</strong>: You’ll need to completely master the beginner level tales.</li>
-<li>🔴 <strong>Advanced</strong>: Math-heavy, State-of-the-art topics.</li>
+<li><a href="../posts/xavier-initialization.html">Why Neural Networks Forget</a></li>
 </ul>
-<p>Feel free to read, share and learn from this collection. Just don’t feed it directly to Skynet.</p>
-<hr>
-<section id="recent-articles" class="level2">
-<h2 class="anchored" data-anchor-id="recent-articles">📚 Recent articles</h2>
 
 
 
@@ -227,31 +214,22 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1748370204308" data-listing-reading-time-sort="1" data-listing-word-count-sort="5">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/index.html" class="no-external">Posts</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/index.html" class="no-external">
-The Vanishing Gradient Problem Explained
+<div class="quarto-post image-right" data-index="0" data-categories="ZGVlcC1sZWFybmluZyUyQyVGMCU5RiU5RiVBMW1lZGl1bQ==" data-listing-file-modified-sort="1748369697935" data-listing-reading-time-sort="3" data-listing-word-count-sort="569">
+<div class="thumbnail"><a href="../posts/xavier-initialization.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
 </a></div>
-</div>
-<div class="metadata">
-<a href="./posts/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="ZGVlcC1sZWFybmluZyUyQyVGMCU5RiU5RiVBMW1lZGl1bQ==" data-listing-file-modified-sort="1748369697935" data-listing-reading-time-sort="3" data-listing-word-count-sort="569">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/xavier-initialization.html" class="no-external">Why Neural Networks Forget:</a>
+<a href="../posts/xavier-initialization.html" class="no-external">Why Neural Networks Forget:</a>
 </h3>
-<div class="delink listing-description"><a href="./posts/xavier-initialization.html" class="no-external">
+<div class="delink listing-description"><a href="../posts/xavier-initialization.html" class="no-external">
 <p>The Vanishing Gradient Problem Explained</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/xavier-initialization.html" class="no-external">
+<a href="../posts/xavier-initialization.html" class="no-external">
 </a>
 </div>
 </div>

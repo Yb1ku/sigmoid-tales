@@ -2,6 +2,13 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/index.html",
+      "/posts/xavier-initialization.html"
+    ]
+  },
+  {
+    "listing": "/posts/index.html",
+    "items": [
       "/posts/xavier-initialization.html"
     ]
   }
