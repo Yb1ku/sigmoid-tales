@@ -4,7 +4,8 @@ cd /d "%~dp0"
 echo 🔄 Renderizando el sitio con Quarto...
 quarto render
 
-echo ✅ Sitio generado en /docs
+echo 🔃 Haciendo pull para sincronizar con GitHub...
+git pull origin main --rebase
 
 echo 📤 Añadiendo cambios a Git...
 git add .
