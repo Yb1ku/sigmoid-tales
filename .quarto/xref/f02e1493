@@ -1,1 +1,1 @@
-{"entries":[],"headings":["why-neural-networks-forget-the-vanishing-gradient-problem-explained","the-risks-of-random-initialization","the-xavier-initialization-solution","references"]}
+{"entries":[],"headings":["vanishing-gradients","the-risks-of-random-initialization","the-xavier-initialization-solution","notation","forward-pass","backward-pass","a-balanced-solution","references"]}

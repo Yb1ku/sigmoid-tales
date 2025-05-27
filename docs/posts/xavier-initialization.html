@@ -8,7 +8,7 @@
 
 <meta name="description" content="The Vanishing Gradient Problem Explained">
 
-<title>Why Neural Networks Forget: – The Sigmoid Tales</title>
+<title>Why Neural Networks Forget – The Sigmoid Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -146,7 +146,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-neural-networks-forget-the-vanishing-gradient-problem-explained" id="toc-why-neural-networks-forget-the-vanishing-gradient-problem-explained" class="nav-link active" data-scroll-target="#why-neural-networks-forget-the-vanishing-gradient-problem-explained">Why Neural Networks Forget: The Vanishing Gradient Problem Explained</a></li>
+  <li><a href="#vanishing-gradients" id="toc-vanishing-gradients" class="nav-link active" data-scroll-target="#vanishing-gradients">Vanishing gradients</a></li>
   <li><a href="#the-risks-of-random-initialization" id="toc-the-risks-of-random-initialization" class="nav-link" data-scroll-target="#the-risks-of-random-initialization">The risks of random initialization</a></li>
   <li><a href="#the-xavier-initialization-solution" id="toc-the-xavier-initialization-solution" class="nav-link" data-scroll-target="#the-xavier-initialization-solution">The Xavier Initialization solution</a>
   <ul class="collapse">
@@ -164,7 +164,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why Neural Networks Forget:</h1>
+<h1 class="title">Why Neural Networks Forget</h1>
   <div class="quarto-categories">
     <div class="quarto-category">deep-learning</div>
     <div class="quarto-category">🟡medium</div>
@@ -190,10 +190,14 @@ window.Quarto = {
 </header>
 
 
-<section id="why-neural-networks-forget-the-vanishing-gradient-problem-explained" class="level1">
-<h1>Why Neural Networks Forget: The Vanishing Gradient Problem Explained</h1>
+<section id="vanishing-gradients" class="level1">
+<h1>Vanishing gradients</h1>
 <p>Neural networks adjust their parameters through the well-known backpropagation algorithm. The cost function gradients are propagated from the output layer back to all layers of the model, enabling parameter updates. The network’s training depends on gradients being properly propagated. If the gradients fail to reach the earlier layers, the network won’t train as expected. Can something like this actually happen? Let’s see a practical example.</p>
-<p>Consider a layer with a sigmoid activation function. From basic calculus, we know that <span class="math inline">\(\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))\)</span> reaches its maximum value of 0.25 at <span class="math inline">\(x=0\)</span>, and is zero when <span class="math inline">\(\sigma(x)\)</span> saturates at 0 or 1. To update the weights of this layer, we need to compute <span class="math inline">\(\large \frac{\partial L}{\partial W^{(L)}}\)</span>, which by the chain rule is: <span class="math display">\[
+<p>Consider a layer with a sigmoid activation function. From basic calculus, we know that <span class="math inline">\(\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))\)</span> reaches its maximum value of 0.25 at <span class="math inline">\(x=0\)</span>, and is zero when <span class="math inline">\(\sigma(x)\)</span> saturates at 0 or 1. For more clarity, the following plot shows both the sigmoid function and its derivative.</p>
+<div style="text-align: center;">
+<p><img src="../images/sigmoid_derivative.png" alt="Logo" width="500"></p>
+</div>
+<p>To update the weights of this layer, we need to compute <span class="math inline">\(\large \frac{\partial L}{\partial W^{(L)}}\)</span>, which by the chain rule is: <span class="math display">\[
 \large \frac{\partial L}{\partial W^{(L)}}=\frac{\partial z^{(L)}}{\partial W^{(L)}}\frac{\partial a^{(L)}}{\partial z^{(L)}}\frac{\partial L}{\partial a^{(L)}}
 \]</span> Focusing on <span class="math inline">\(\large \frac{\partial a^{(L)}}{\partial z^{(L)}}\)</span>: <span class="math display">\[
 \large \frac{\partial a^{(L)}}{\partial z^{(L)}}=\sigma(z^{(L)})(1-\sigma(z^{L}))

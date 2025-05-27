@@ -1,18 +1,25 @@
 
 --- 
-title: "Why Neural Networks Forget:"
+title: "Why Neural Networks Forget"
 description: "The Vanishing Gradient Problem Explained"
 format: html
 categories: [deep-learning, 🟡medium]
 title-block-banner: false
 ---
 
-# Why Neural Networks Forget: The Vanishing Gradient Problem Explained 
+# Vanishing gradients 
 
 Neural networks adjust their parameters through the well-known backpropagation algorithm. The cost function gradients are propagated from the output layer back to all layers of the model, enabling parameter updates. The network’s training depends on gradients being properly propagated. If the gradients fail to reach the earlier layers, the network won’t train as expected. Can something like this actually happen? Let’s see a practical example. 
 
 Consider a layer with a sigmoid activation function. From basic calculus, we know that 
-$\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))$ reaches its maximum value of 0.25 at $x=0$, and is zero when $\sigma(x)$ saturates at 0 or 1. To update the weights of this layer, we need to compute $\large \frac{\partial L}{\partial W^{(L)}}$, which by the chain rule is: 
+$\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))$ reaches its maximum value of 0.25 at $x=0$, and is zero when $\sigma(x)$ saturates at 0 or 1. For more clarity, the following plot shows both the sigmoid function and its derivative.
+
+<div style="text-align: center;">
+  <img src="../images/sigmoid_derivative.png" alt="Logo" width="500"/>
+</div>
+
+
+To update the weights of this layer, we need to compute $\large \frac{\partial L}{\partial W^{(L)}}$, which by the chain rule is: 
 $$ 
 \large \frac{\partial L}{\partial W^{(L)}}=\frac{\partial z^{(L)}}{\partial W^{(L)}}\frac{\partial a^{(L)}}{\partial z^{(L)}}\frac{\partial L}{\partial a^{(L)}}
 $$
