@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="The Vanishing Gradient Problem Explained">
 
-<title>Why Neural Networks Forget: – The Sigmoid Tales</title>
+<title>About – The Sigmoid Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bb49951d50c4a7e8d052f44ae1610a34.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-bb49951d50c4a7e8d052f44ae1610a34.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -108,7 +78,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">The Sigmoid Tales</span>
     </a>
   </div>
@@ -119,11 +89,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.qmd"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link active" href="./about.html" aria-current="page"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -137,37 +107,17 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#why-neural-networks-forget-the-vanishing-gradient-problem-explained" id="toc-why-neural-networks-forget-the-vanishing-gradient-problem-explained" class="nav-link active" data-scroll-target="#why-neural-networks-forget-the-vanishing-gradient-problem-explained">Why Neural Networks Forget: The Vanishing Gradient Problem Explained</a></li>
-  <li><a href="#the-risks-of-random-initialization" id="toc-the-risks-of-random-initialization" class="nav-link" data-scroll-target="#the-risks-of-random-initialization">The risks of random initialization</a></li>
-  <li><a href="#the-xavier-initialization-solution" id="toc-the-xavier-initialization-solution" class="nav-link" data-scroll-target="#the-xavier-initialization-solution">The Xavier Initialization solution</a>
-  <ul class="collapse">
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Why Neural Networks Forget:</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">deep-learning</div>
-    <div class="quarto-category">🟡medium</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    The Vanishing Gradient Problem Explained
-  </div>
+<h1 class="title">About</h1>
 </div>
+
 
 
 <div class="quarto-title-meta">
@@ -182,44 +132,9 @@ window.Quarto = {
 </header>
 
 
-<section id="why-neural-networks-forget-the-vanishing-gradient-problem-explained" class="level1">
-<h1>Why Neural Networks Forget: The Vanishing Gradient Problem Explained</h1>
-<p>Neural networks adjust their parameters through the well-known backpropagation algorithm. The cost function gradients are propagated from the output layer back to all layers of the model, enabling parameter updates. The network’s training depends on gradients being properly propagated. If the gradients fail to reach the earlier layers, the network won’t train as expected. Can something like this actually happen? Let’s see a practical example.</p>
-<p>Consider a layer with a sigmoid activation function. From basic calculus, we know that <span class="math inline">\(\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))\)</span> reaches its maximum value of 0.25 at <span class="math inline">\(x=0\)</span>, and is zero when <span class="math inline">\(\sigma(x)\)</span> saturates at 0 or 1. To update the weights of this layer, we need to compute <span class="math inline">\(\large \frac{\partial L}{\partial W^{(L)}}\)</span>, which by the chain rule is: <span class="math display">\[
-\large \frac{\partial L}{\partial W^{(L)}}=\frac{\partial z^{(L)}}{\partial W^{(L)}}\frac{\partial a^{(L)}}{\partial z^{(L)}}\frac{\partial L}{\partial a^{(L)}}
-\]</span> Focusing on <span class="math inline">\(\large \frac{\partial a^{(L)}}{\partial z^{(L)}}\)</span>: <span class="math display">\[
-\large \frac{\partial a^{(L)}}{\partial z^{(L)}}=\sigma(z^{(L)})(1-\sigma(z^{L}))
-\]</span> If <span class="math inline">\(\sigma(z^{(L)})=1\)</span> or <span class="math inline">\(\sigma(z^{(L)})=0\)</span>, then the gradient is zero. This phenomenon is called <strong>gradient vanishing</strong>. If there’s no gradient, there’s no learning. Since the derivative of the sigmoid is always in the range <span class="math inline">\([0,0.25]\)</span>, it’s prone to vanishing gradients.</p>
-</section>
-<section id="the-risks-of-random-initialization" class="level1">
-<h1>The risks of random initialization</h1>
-<p>One commonly overlooked detail when training a neural network is weight initialization. If the initial weights push the activation values into saturation zones (0 or 1), gradient vanishing can occur. For example, if weights are initialized as <span class="math inline">\(W\sim\mathcal{N}(0,1)\)</span>, some values might lie far outside the optimal region. A natural fix might be to initialize weights as <span class="math inline">\(W\sim\mathcal{U}[-1,1]\)</span>, keeping values within range. This may work for small, shallow networks. Let <span class="math inline">\(n\)</span> be the number of neurons in layer <span class="math inline">\(l-1\)</span>, meaning the next layer has <span class="math inline">\(n\)</span> inputs. The pre-activation of a neuron is <span class="math inline">\(\sum_{i=1}^n w_{i}x_{i}\)</span>, If <span class="math inline">\(n\)</span> is large, the sum may become too large and lead to saturation. So, uniform initialization isn’t ideal either.</p>
-</section>
-<section id="the-xavier-initialization-solution" class="level1">
-<h1>The Xavier Initialization solution</h1>
-<p>If initializing with zeros, Gaussian, or uniform distributions is problematic, what’s the solution? Fortunately, Xavier Glorot and Yoshua Bengio proposed one in 2010. In their paper <em>Understanding the Difficulty of Training Deep Feedforward Neural Networks</em>, they introduced what we now call <strong>Xavier Initialization</strong>. ### Notation Let <span class="math inline">\(s_{i}=z_{i}W_{i}+b_{i}\)</span> be the pre-activation, so <span class="math inline">\(z_{i+1}=f(s_{i})\)</span>. The analysis focuses near the origin, where the sigmoid behaves approximately linearly <span class="math inline">\(\sigma(x)\approx x\)</span> and <span class="math inline">\(\sigma'(x)\approx 1\)</span>. The goal is to keep the variance of <span class="math inline">\(z_{i+1}\)</span> (forward pass) and the variance of gradients (backward pass) of the same order in every layer. ### Forward Pass We write <span class="math inline">\(s_{i}=\sum_{j=1}^n z_{j}^{i} w_{i}^{j}\)</span>, assuming all <span class="math inline">\(w_{i}^{j}\)</span> are independent with zero mean and variance <span class="math inline">\(\text{Var}[w_{i}]\)</span>, and similarly for <span class="math inline">\(w_{j}^{i}\)</span>. Then: <span class="math display">\[
-\large \text{Var}[s_{i}]=\sum_{j=1}^{n_{i}}\text{Var}[z_{i}^{j}]·\text{Var}[w_{i}^{j}]=n_{i}·\text{Var}[z_{i}]\text{Var}[w_{i}]
-\]</span> Near the origin, <span class="math inline">\(\large \text{Var}[z_{i+1}]\approx \text{Var}[S_{i}]\)</span>, so we want: <span class="math display">\[
-\large \mathrm{Var}[z_{i+1}] \approx \mathrm{Var}[z_i] \Rightarrow n_i \cdot \mathrm{Var}[z_i] \cdot \mathrm{Var}[w_i] \approx \mathrm{Var}[z_i] \Rightarrow n_i \cdot \mathrm{Var}[w_i] \approx 1
-\]</span> ### Backward Pass To compute the gradient <span class="math inline">\(\large \delta_{i}=\frac{\partial L}{\partial s_{i}}\)</span>, we use the chain rule and the linear approximation <span class="math inline">\(\large \delta_{i} \approx W_{i+1}^{T}\delta_{i+1}\)</span>. Therefore: <span class="math display">\[
-\mathrm{Var}[\delta_i] \approx n_{i+1} \cdot \mathrm{Var}[W_i] \cdot \mathrm{Var}[\delta_{i+1}] \Rightarrow n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1
-\]</span> ### A balanced solution We now hace two desired conditions: - <span class="math inline">\(n_i \cdot \mathrm{Var}[w_i] \approx 1\)</span> - <span class="math inline">\(n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1\)</span> If <span class="math inline">\(n_{i}=n_{i+1}\)</span>, both are satisfied. When not, Glorot and Bengio propose a compromise: <span class="math display">\[
-\large \text{Var}[W_{i}]=\frac{2}{n_{i}+n_{i+1}}
-\]</span> To implement this in practice, with a uniform distribution <span class="math inline">\(W_{i}\sim \mathcal{U}[-a,a]\)</span>, note that: <span class="math display">\[
-\large \frac{2}{n_i + n_{i+1}} = \frac{a^2}{3} \Rightarrow a = \sqrt{\frac{6}{n_i + n_{i+1}}}
-\]</span> This yields the final Xavier Initialization: <span class="math display">\[
-\Large W_{i}=\mathcal{U}[-\sqrt{\frac{6}{n_{i}+n_{i+1}}},+\sqrt{\frac{6}{n_{i}+n_{i+1}}}]
-\]</span></p>
-<hr>
-<section id="references" class="level3">
-<h3 class="anchored" data-anchor-id="references">References</h3>
-<ul>
-<li>Xavier Glorot, Yoshua Bengio, <em>Understanding the Difficulty of Training Deep Feedforward Neural Networks</em>, 2010.</li>
-</ul>
+<p>About this site</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
