@@ -19,5 +19,8 @@
   },
   "posts/index.qmd": {
     "index.html": "57219f2d"
+  },
+  "posts/optimizers.md": {
+    "optimizers.html": "fbef4684"
   }
 }

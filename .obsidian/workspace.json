@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "c7a4335234971e25",
+        "id": "8c6cbdf2b81a6569",
         "type": "tabs",
         "children": [
           {
-            "id": "fe0935c1e97ada59",
+            "id": "d3a21fbf94f8ebb2",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -74,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 209.5,
-    "collapsed": true
+    "width": 209.5
   },
   "right": {
     "id": "df919f6e2604b68b",
@@ -162,22 +161,24 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "fe0935c1e97ada59",
+  "active": "d3a21fbf94f8ebb2",
   "lastOpenFiles": [
-    "docs/listings.json",
-    "docs/search.json",
+    "posts/optimizers_files/mediabag",
+    "posts/optimizers_files",
+    "posts/index-listing.json",
+    "posts/index.html",
+    "posts/index_files/mediabag",
+    "posts/index_files",
+    "index-listing.json",
+    "site_libs/quarto-listing/quarto-listing.js",
+    "site_libs/quarto-listing/list.min.js",
+    "site_libs/quarto-listing",
+    "index.html",
+    "posts/xavier-initialization.md",
+    "posts/optimizers.md",
+    "images/gradient_descent.png",
     "docs/images/sigmoid_derivative.png",
     "docs/images/logo.png",
-    "docs/images",
-    "docs/site_libs/quarto-html/tabsets/tabsets.js",
-    "docs/site_libs/quarto-search/quarto-search.js",
-    "docs/site_libs/quarto-search/fuse.min.js",
-    "docs/site_libs/quarto-search/autocomplete.umd.js",
-    "docs/site_libs/quarto-listing/quarto-listing.js",
-    "docs/site_libs/quarto-listing/list.min.js",
-    "docs/site_libs/quarto-nav/quarto-nav.js",
-    "docs/site_libs/quarto-nav/headroom.min.js",
-    "posts/xavier-initialization.md",
     "images/sigmoid_derivative.png",
     "README.md",
     "posts/index.md",

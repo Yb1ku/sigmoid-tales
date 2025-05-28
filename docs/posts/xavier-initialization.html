@@ -230,7 +230,12 @@ window.Quarto = {
 </section>
 <section id="a-balanced-solution" class="level3">
 <h3 class="anchored" data-anchor-id="a-balanced-solution">A balanced solution</h3>
-<p>We now have two desired conditions: - <span class="math inline">\(n_i \cdot \mathrm{Var}[w_i] \approx 1\)</span> - <span class="math inline">\(n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1\)</span> If <span class="math inline">\(n_{i}=n_{i+1}\)</span>, both are satisfied. When not, Glorot and Bengio propose a compromise: <span class="math display">\[
+<p>We now have two desired conditions:</p>
+<ul>
+<li><span class="math inline">\(n_i \cdot \mathrm{Var}[w_i] \approx 1\)</span></li>
+<li><span class="math inline">\(n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1\)</span></li>
+</ul>
+<p>If <span class="math inline">\(n_{i}=n_{i+1}\)</span>, both are satisfied. When not, Glorot and Bengio propose a compromise: <span class="math display">\[
 \large \text{Var}[W_{i}]=\frac{2}{n_{i}+n_{i+1}}
 \]</span> To implement this in practice, with a uniform distribution <span class="math inline">\(W_{i}\sim \mathcal{U}[-a,a]\)</span>, note that: <span class="math display">\[
 \large \frac{2}{n_i + n_{i+1}} = \frac{a^2}{3} \Rightarrow a = \sqrt{\frac{6}{n_i + n_{i+1}}}
