@@ -1,16 +1,14 @@
 [
   {
-    "listing": "/posts/index.html",
+    "listing": "/index.html",
     "items": [
-      "/posts/optimizers.html",
+      "/posts/index.html",
       "/posts/xavier-initialization.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/posts/index.html",
     "items": [
-      "/posts/index.html",
-      "/posts/optimizers.html",
       "/posts/xavier-initialization.html"
     ]
   }
