@@ -21,13 +21,6 @@
     "text": "Overview of the project\nThe Sigmoid Tales is a series of short essays on key ML & DL topics. the main goal is to demystify the core concepts and techniques of the field, explaining not only the how, but also the why. This collection also aims to bridge the gap between hard mathematics, complex theoretical concepts and practical applications. Each “tale” focuses on a specific concept, covering most of the areas in Machine Learning. They are labeled by colors, each one indicating the level needed to understand the content:\n\n🟢 Beginner: Usually intuitions and very basic concepts.\n🟡 Medium: A bit more advanced, but still basic concepts.\n🟠 Medium/Advanced: You’ll need to completely master the beginner level tales.\n🔴 Advanced: Math-heavy, State-of-the-art topics.\n\nFeel free to read, share and learn from this collection. Just don’t feed it directly to Skynet."
   },
   {
-    "objectID": "index.html#recent-articles",
-    "href": "index.html#recent-articles",
-    "title": "The Sigmoid Tales",
-    "section": "📚 Recent articles",
-    "text": "📚 Recent articles"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
