@@ -20,7 +20,7 @@ $$
 $$
 Here, $\eta$ is the **learning rate**, a small constant which controls the step size. Repeat this process over and over, and the model will gradually adjust its parameters to reduce the error, ideally finding a minimum of the loss function. Here is a visual representation of this process: 
 
-![gradient_descent](gradient_descent.png)
+![gradient_descent](../images/gradient_descent.png)
 
 We usually work with really big datasets, so using all the examples is often not feasible. To solve this problem, the are a few modifications we can make to gradient descent: 
 
