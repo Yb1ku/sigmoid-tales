@@ -146,14 +146,10 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vanishing-gradients" id="toc-vanishing-gradients" class="nav-link active" data-scroll-target="#vanishing-gradients">Vanishing gradients</a></li>
+  <li><a href="#why-neural-networks-forget-the-vanishing-gradient-problem-explained" id="toc-why-neural-networks-forget-the-vanishing-gradient-problem-explained" class="nav-link active" data-scroll-target="#why-neural-networks-forget-the-vanishing-gradient-problem-explained">Why Neural Networks Forget: The Vanishing Gradient Problem Explained</a></li>
   <li><a href="#the-risks-of-random-initialization" id="toc-the-risks-of-random-initialization" class="nav-link" data-scroll-target="#the-risks-of-random-initialization">The risks of random initialization</a></li>
   <li><a href="#the-xavier-initialization-solution" id="toc-the-xavier-initialization-solution" class="nav-link" data-scroll-target="#the-xavier-initialization-solution">The Xavier Initialization solution</a>
   <ul class="collapse">
-  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation">Notation</a></li>
-  <li><a href="#forward-pass" id="toc-forward-pass" class="nav-link" data-scroll-target="#forward-pass">Forward Pass</a></li>
-  <li><a href="#backward-pass" id="toc-backward-pass" class="nav-link" data-scroll-target="#backward-pass">Backward Pass</a></li>
-  <li><a href="#a-balanced-solution" id="toc-a-balanced-solution" class="nav-link" data-scroll-target="#a-balanced-solution">A balanced solution</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -190,14 +186,10 @@ window.Quarto = {
 </header>
 
 
-<section id="vanishing-gradients" class="level1">
-<h1>Vanishing gradients</h1>
+<section id="why-neural-networks-forget-the-vanishing-gradient-problem-explained" class="level1">
+<h1>Why Neural Networks Forget: The Vanishing Gradient Problem Explained</h1>
 <p>Neural networks adjust their parameters through the well-known backpropagation algorithm. The cost function gradients are propagated from the output layer back to all layers of the model, enabling parameter updates. The network’s training depends on gradients being properly propagated. If the gradients fail to reach the earlier layers, the network won’t train as expected. Can something like this actually happen? Let’s see a practical example.</p>
-<p>Consider a layer with a sigmoid activation function. From basic calculus, we know that <span class="math inline">\(\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))\)</span> reaches its maximum value of 0.25 at <span class="math inline">\(x=0\)</span>, and is zero when <span class="math inline">\(\sigma(x)\)</span> saturates at 0 or 1. For more clarity, the following plot shows both the sigmoid function and its derivative.</p>
-<div style="text-align: center;">
-<p><img src="../images/sigmoid_derivative.png" alt="Logo" width="500"></p>
-</div>
-<p>To update the weights of this layer, we need to compute <span class="math inline">\(\large \frac{\partial L}{\partial W^{(L)}}\)</span>, which by the chain rule is: <span class="math display">\[
+<p>Consider a layer with a sigmoid activation function. From basic calculus, we know that <span class="math inline">\(\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))\)</span> reaches its maximum value of 0.25 at <span class="math inline">\(x=0\)</span>, and is zero when <span class="math inline">\(\sigma(x)\)</span> saturates at 0 or 1. To update the weights of this layer, we need to compute <span class="math inline">\(\large \frac{\partial L}{\partial W^{(L)}}\)</span>, which by the chain rule is: <span class="math display">\[
 \large \frac{\partial L}{\partial W^{(L)}}=\frac{\partial z^{(L)}}{\partial W^{(L)}}\frac{\partial a^{(L)}}{\partial z^{(L)}}\frac{\partial L}{\partial a^{(L)}}
 \]</span> Focusing on <span class="math inline">\(\large \frac{\partial a^{(L)}}{\partial z^{(L)}}\)</span>: <span class="math display">\[
 \large \frac{\partial a^{(L)}}{\partial z^{(L)}}=\sigma(z^{(L)})(1-\sigma(z^{L}))
@@ -209,33 +201,17 @@ window.Quarto = {
 </section>
 <section id="the-xavier-initialization-solution" class="level1">
 <h1>The Xavier Initialization solution</h1>
-<p>If initializing with zeros, Gaussian, or uniform distributions is problematic, what’s the solution? Fortunately, Xavier Glorot and Yoshua Bengio proposed one in 2010. In their paper <em>Understanding the Difficulty of Training Deep Feedforward Neural Networks</em>, they introduced what we now call <strong>Xavier Initialization</strong>.</p>
-<section id="notation" class="level3">
-<h3 class="anchored" data-anchor-id="notation">Notation</h3>
-<p>Let <span class="math inline">\(s_{i}=z_{i}W_{i}+b_{i}\)</span> be the pre-activation, so <span class="math inline">\(z_{i+1}=f(s_{i})\)</span>. The analysis focuses near the origin, where the sigmoid behaves approximately linearly <span class="math inline">\(\sigma(x)\approx x\)</span> and <span class="math inline">\(\sigma'(x)\approx 1\)</span>. The goal is to keep the variance of <span class="math inline">\(z_{i+1}\)</span> (forward pass) and the variance of gradients (backward pass) of the same order in every layer.</p>
-</section>
-<section id="forward-pass" class="level3">
-<h3 class="anchored" data-anchor-id="forward-pass">Forward Pass</h3>
+<p>If initializing with zeros, Gaussian, or uniform distributions is problematic, what’s the solution? Fortunately, Xavier Glorot and Yoshua Bengio proposed one in 2010. In their paper <em>Understanding the Difficulty of Training Deep Feedforward Neural Networks</em>, they introduced what we now call <strong>Xavier Initialization</strong>. ### Notation</p>
+<p>Let <span class="math inline">\(s_{i}=z_{i}W_{i}+b_{i}\)</span> be the pre-activation, so <span class="math inline">\(z_{i+1}=f(s_{i})\)</span>. The analysis focuses near the origin, where the sigmoid behaves approximately linearly <span class="math inline">\(\sigma(x)\approx x\)</span> and <span class="math inline">\(\sigma'(x)\approx 1\)</span>. The goal is to keep the variance of <span class="math inline">\(z_{i+1}\)</span> (forward pass) and the variance of gradients (backward pass) of the same order in every layer. ### Forward Pass</p>
 <p>We write <span class="math inline">\(s_{i}=\sum_{j=1}^n z_{j}^{i} w_{i}^{j}\)</span>, assuming all <span class="math inline">\(w_{i}^{j}\)</span> are independent with zero mean and variance <span class="math inline">\(\text{Var}[w_{i}]\)</span>, and similarly for <span class="math inline">\(w_{j}^{i}\)</span>. Then: <span class="math display">\[
 \large \text{Var}[s_{i}]=\sum_{j=1}^{n_{i}}\text{Var}[z_{i}^{j}]·\text{Var}[w_{i}^{j}]=n_{i}·\text{Var}[z_{i}]\text{Var}[w_{i}]
 \]</span> Near the origin, <span class="math inline">\(\large \text{Var}[z_{i+1}]\approx \text{Var}[S_{i}]\)</span>, so we want: <span class="math display">\[
 \large \mathrm{Var}[z_{i+1}] \approx \mathrm{Var}[z_i] \Rightarrow n_i \cdot \mathrm{Var}[z_i] \cdot \mathrm{Var}[w_i] \approx \mathrm{Var}[z_i] \Rightarrow n_i \cdot \mathrm{Var}[w_i] \approx 1
-\]</span></p>
-</section>
-<section id="backward-pass" class="level3">
-<h3 class="anchored" data-anchor-id="backward-pass">Backward Pass</h3>
+\]</span> ### Backward Pass</p>
 <p>To compute the gradient <span class="math inline">\(\large \delta_{i}=\frac{\partial L}{\partial s_{i}}\)</span>, we use the chain rule and the linear approximation <span class="math inline">\(\large \delta_{i} \approx W_{i+1}^{T}\delta_{i+1}\)</span>. Therefore: <span class="math display">\[
 \mathrm{Var}[\delta_i] \approx n_{i+1} \cdot \mathrm{Var}[W_i] \cdot \mathrm{Var}[\delta_{i+1}] \Rightarrow n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1
-\]</span></p>
-</section>
-<section id="a-balanced-solution" class="level3">
-<h3 class="anchored" data-anchor-id="a-balanced-solution">A balanced solution</h3>
-<p>We now have two desired conditions:</p>
-<ul>
-<li><span class="math inline">\(n_i \cdot \mathrm{Var}[w_i] \approx 1\)</span></li>
-<li><span class="math inline">\(n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1\)</span></li>
-</ul>
-<p>If <span class="math inline">\(n_{i}=n_{i+1}\)</span>, both are satisfied. When not, Glorot and Bengio propose a compromise: <span class="math display">\[
+\]</span> ### A balanced solution</p>
+<p>We now have two desired conditions: - <span class="math inline">\(n_i \cdot \mathrm{Var}[w_i] \approx 1\)</span> - <span class="math inline">\(n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1\)</span> If <span class="math inline">\(n_{i}=n_{i+1}\)</span>, both are satisfied. When not, Glorot and Bengio propose a compromise: <span class="math display">\[
 \large \text{Var}[W_{i}]=\frac{2}{n_{i}+n_{i+1}}
 \]</span> To implement this in practice, with a uniform distribution <span class="math inline">\(W_{i}\sim \mathcal{U}[-a,a]\)</span>, note that: <span class="math display">\[
 \large \frac{2}{n_i + n_{i+1}} = \frac{a^2}{3} \Rightarrow a = \sqrt{\frac{6}{n_i + n_{i+1}}}
@@ -243,7 +219,6 @@ window.Quarto = {
 \Large W_{i}=\mathcal{U}[-\sqrt{\frac{6}{n_{i}+n_{i+1}}},+\sqrt{\frac{6}{n_{i}+n_{i+1}}}]
 \]</span></p>
 <hr>
-</section>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <ul>

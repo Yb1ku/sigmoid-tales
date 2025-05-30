@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="An intuitive introduction to optimization algorithms like AdaGrad, RMSProp and Adam.">
 
-<title>The Sigmoid Tales</title>
+<title>How Do Neural Networks Learn? – The Sigmoid Tales</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +24,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bb49951d50c4a7e8d052f44ae1610a34.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bb49951d50c4a7e8d052f44ae1610a34.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -138,7 +108,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">The Sigmoid Tales</span>
     </a>
   </div>
@@ -149,15 +119,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./posts/index.html"> 
+    <a class="nav-link" href="../posts/index.html"> 
 <span class="menu-text">Posts</span></a>
   </li>  
 </ul>
@@ -176,8 +146,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#overview-of-the-project" id="toc-overview-of-the-project" class="nav-link active" data-scroll-target="#overview-of-the-project">Overview of the project</a></li>
-  <li><a href="#recent-articles" id="toc-recent-articles" class="nav-link" data-scroll-target="#recent-articles">📚 Recent articles</a></li>
+  <li><a href="#how-do-neural-networks-learn" id="toc-how-do-neural-networks-learn" class="nav-link active" data-scroll-target="#how-do-neural-networks-learn">How do Neural Networks learn?</a>
+  <ul class="collapse">
+  <li><a href="#gradient-descent-how-to-learn-from-mistakes" id="toc-gradient-descent-how-to-learn-from-mistakes" class="nav-link" data-scroll-target="#gradient-descent-how-to-learn-from-mistakes">Gradient descent: how to learn from mistakes</a></li>
+  </ul></li>
+  <li><a href="#learning-is-a-two-phase-process" id="toc-learning-is-a-two-phase-process" class="nav-link" data-scroll-target="#learning-is-a-two-phase-process">Learning is a two-phase process</a>
+  <ul class="collapse">
+  <li><a href="#adagrad-adaptive-gradient" id="toc-adagrad-adaptive-gradient" class="nav-link" data-scroll-target="#adagrad-adaptive-gradient">AdaGrad: Adaptive Gradient</a></li>
+  <li><a href="#rmsprop" id="toc-rmsprop" class="nav-link" data-scroll-target="#rmsprop">RMSProp</a></li>
+  <li><a href="#adam" id="toc-adam" class="nav-link" data-scroll-target="#adam">Adam</a></li>
+  </ul></li>
+  <li><a href="#comparing-the-optimizers" id="toc-comparing-the-optimizers" class="nav-link" data-scroll-target="#comparing-the-optimizers">Comparing the optimizers</a></li>
   </ul>
 </nav>
     </div>
@@ -186,9 +165,19 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Sigmoid Tales</h1>
-</div>
+<h1 class="title">How Do Neural Networks Learn?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">optimization</div>
+    <div class="quarto-category">deep learning</div>
+    <div class="quarto-category">🟢beginner</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    An intuitive introduction to optimization algorithms like AdaGrad, RMSProp and Adam.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -203,79 +192,146 @@ window.Quarto = {
 </header>
 
 
-<div style="text-align: center;">
-<p><img src="images/logo.png" alt="Sigmoid Tales Logo" width="160"></p>
+<section id="how-do-neural-networks-learn" class="level1">
+<h1>How do Neural Networks learn?</h1>
+<p>Training a neural network has never been easier. You define the architecture with <code>Keras</code> (or <code>PyTorch</code>, if you know what’s good), set the optimizer and run the <code>model.train</code> command. Many times, most people don’t pay attention to the optimizer. Most people simply choose Adam and start the training without questioning if it’s the right choice. However, as you get involved with architectures a bit more complex than the classical feed-forward neural network for the MNIST digits dataset, you may come across quite a frustrating situation: after a few epochs, the model won’t improve the loss metric. And maybe (just maybe) the reason could be the optimizer you are using.</p>
+<section id="gradient-descent-how-to-learn-from-mistakes" class="level3">
+<h3 class="anchored" data-anchor-id="gradient-descent-how-to-learn-from-mistakes">Gradient descent: how to learn from mistakes</h3>
+<p>So, how exactly does a neural network learn from its mistakes? The answer lies in one of the simplest yet powerful ideas in optimization: <strong>gradient descent</strong>.</p>
+<p>The gradient of the loss with respect to certain parameters tells us the direction in which the loss increases the most. So, to reduce the loss, we should take a small step in the opposite direction. Mathematically, we usually represent the model’s parameters with the Greek letter <span class="math inline">\(\theta\)</span>, and <span class="math inline">\(\mathcal{L}(\theta)\)</span> is the loss function. Hence, the update rule is: <span class="math display">\[
+\large \theta \leftarrow \theta - \eta \cdot \nabla_{\theta} \mathcal{L}(\theta)
+\]</span> Here, <span class="math inline">\(\eta\)</span> is the <strong>learning rate</strong>, a small constant which controls the step size. Repeat this process over and over, and the model will gradually adjust its parameters to reduce the error, ideally finding a minimum of the loss function. Here is a visual representation of this process:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="gradient_descent.png" class="img-fluid figure-img"></p>
+<figcaption>gradient_descent</figcaption>
+</figure>
 </div>
-<p>Welcome to the Sigmoid Tales — a curated collection of technical yet accessible essays on Machine Learning &amp; Deep Learning. Whether you’re just starting or brushing up on foundational concepts, this repository aims to clarify complex ideas through clear writing, visual intuition and well-grounded mathematics.</p>
-<blockquote class="blockquote">
-<p>🚧 <strong>Work in Progress</strong> This project is a living document. New articles will be added over time.</p>
-</blockquote>
-<section id="overview-of-the-project" class="level2">
-<h2 class="anchored" data-anchor-id="overview-of-the-project">Overview of the project</h2>
-<p>The Sigmoid Tales is a series of short essays on key ML &amp; DL topics. the main goal is to demystify the core concepts and techniques of the field, explaining not only the how, but also the why. This collection also aims to bridge the gap between hard mathematics, complex theoretical concepts and practical applications. Each “tale” focuses on a specific concept, covering most of the areas in Machine Learning. They are labeled by colors, each one indicating the level needed to understand the content:</p>
+<p>We usually work with really big datasets, so using all the examples is often not feasible. To solve this problem, the are a few modifications we can make to gradient descent:</p>
 <ul>
-<li>🟢 <strong>Beginner</strong>: Usually intuitions and very basic concepts.</li>
-<li>🟡 <strong>Medium</strong>: A bit more advanced, but still basic concepts.</li>
-<li>🟠 <strong>Medium/Advanced</strong>: You’ll need to completely master the beginner level tales.</li>
-<li>🔴 <strong>Advanced</strong>: Math-heavy, State-of-the-art topics.</li>
+<li><strong>Stochastic Gradient Descent</strong>: Instead of using all the examples in the dataset for each step, we only use one.
+<ul>
+<li>✔️ It is much faster than traditional gradient descent.</li>
+<li>❌ It is less precise, which can hinder convergence.</li>
+</ul></li>
+<li><strong>Mini-batch Gradient Descent</strong>: Computes the gradient using a small subset (batch) of the dataset.
+<ul>
+<li>✔️ Faster than traditional gradient descent.</li>
+<li>✔️ Balances precision and speed.</li>
+<li>❌ Less precise than traditional gradient descent.</li>
+</ul></li>
 </ul>
-<p>Feel free to read, share and learn from this collection. Just don’t feed it directly to Skynet.</p>
 <hr>
 </section>
-<section id="recent-articles" class="level2">
-<h2 class="anchored" data-anchor-id="recent-articles">📚 Recent articles</h2>
-
+</section>
+<section id="learning-is-a-two-phase-process" class="level1">
+<h1>Learning is a two-phase process</h1>
+<p>The most critical hyperparameters in optimization is the <strong>learning rate</strong>. Gradient Descent and its early variants typically use a constant value for this parameter, which might seem sufficient at first glance. However, training a model can often be understood as a two-phase process: an initial phase of rapid adaptation, followed by a slower stage of fine-tuning.</p>
+<p>In the early phase, the model makes several large parameter updates, as it quickly learns the general structure of the data - some sort of “heavy learning process”. Once this phase ends, the model enters a <strong>refinement stage</strong>, where more subtle adjustments are required to further improve performance. These smaller updates would require a lower learning rate, in order to avoid overshooting the minimum. We can see an example of this below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/overshooting.png" class="img-fluid figure-img"></p>
+<figcaption>overshooting</figcaption>
+</figure>
+</div>
+<p>For this particular loss function, setting the learning rate to <code>1.01</code> would make the optimizer to overshoot, preventing convergence to the minimum. On the other hand, setting the learning rate to less than <code>1</code> would allow the optimizer to eventually find the minimum.</p>
+<p>While mastering the art of selecting the right learning rate is essential, a constant learning rate can sometimes be limiting, as it lacks the flexibility to adapt to the evolving needs of the optimization process. Hence, a natural step is to design new optimizers which <strong>dynamically adjust the learning rate</strong>, either over time or based on the gradients’ behavior.</p>
+<section id="adagrad-adaptive-gradient" class="level3">
+<h3 class="anchored" data-anchor-id="adagrad-adaptive-gradient">AdaGrad: Adaptive Gradient</h3>
+<p><strong>AdaGrad</strong>, short for <em>Adaptive Gradient</em>, was the first step towards dynamic learning rate adjustment. Instead of using a fixed learning rate, it reduces it based on the cumulative gradient of each parameter. Let’s dive into the math:</p>
+<p>Suppose we use <span class="math inline">\(\theta \in \mathbb{R}^n\)</span> to denote the vector containing the <span class="math inline">\(n\)</span> parameters of the model. We will use <span class="math inline">\(g_{t}=\nabla_{\theta}\mathcal{L}(\theta_{t})\)</span> to refer to the gradient of the parameters at epoch <span class="math inline">\(t\)</span>. For a specific parameter <span class="math inline">\(\theta_{i}\)</span>, we can compute the <strong>cumulative sum of its gradients</strong> as: <span class="math display">\[
+\large G_{t,i} = \sum_{\tau=1}^{t} g_{\tau,i}^2=G_{t-1,i}+g_{t,i}^{2}
+\]</span> Think of <span class="math inline">\(G_{t,i}\)</span> as the <em>cumulative effort the optimizer has made during the training to update parameter <span class="math inline">\(\theta_{i}\)</span></em>. We now reformulate the update rule as follows: <span class="math display">\[
+\large \theta_{t+1,i} = \theta_{t,i} - \frac{\eta}{\sqrt{G_{t,i}} + \epsilon} \cdot g_{t,i}
+\]</span> If the parameter has received large or frequent updates (i.e., <span class="math inline">\(G_{t,i}\)</span> is large), the AdaGrad assumes it has already undergone substantial learning. As a result, its learning rate is reduced, allowing for more precise adjustments. This is how AdaGrad dynamically adjusts the learning rate per parameter.</p>
+</section>
+<section id="rmsprop" class="level3">
+<h3 class="anchored" data-anchor-id="rmsprop">RMSProp</h3>
+<p>Even though lowering the learning rate over time helps with the overshooting problem, AdaGrad may reduce it too quickly. In practice, if the model spends several epochs in the early stages of training, the cumulative gradients can grow large enough to shrink the effective learning rate dramatically. As a result, the model may stop learning long before reaching a satisfactory solution.</p>
+<p>To avoid this. Geoffrey Hinton proposed <strong>RMSProp</strong>, a simple yet effective modification to the AdaGrad algorithm.</p>
+<p>Instead of relying on the entire history of gradients, RMSProp replaces <span class="math inline">\(G_{t,i}\)</span> with an exponential moving average (EMA) of the squared gradients. RMSProp replaces the cumulative sum with: <span class="math display">\[
+\large E[g^2]_{t,i}=\gamma · E[g^2]_{t-1,i}+(1-\gamma)·g^2_{t,i}
+\]</span> Here, <span class="math inline">\(\gamma \in[0,1)\)</span> is the decay factor, which determines how much weight is given to past gradients. For example, if <span class="math inline">\(\gamma=0.8\)</span>, then <span class="math inline">\(E[g^2]_{t,i}\)</span> will be formed 80% by the old gradients and 20% by the new one. This way, we can control the degree to which past gradient influence the parameter update. The update rule becomes: <span class="math display">\[
+\large \theta_{t+1,i} = \theta_{t,i} - \frac{\eta}{\sqrt{E[g^2]_{t,i}} + \epsilon} \cdot g_{t,i}
+\]</span> This formulation ensures that parameters associated with frequently large gradients receive smaller updates, while still allowing other parameters to keep learning. Unlike AdaGrad, RMSProp avoids vanishing learning rates by gradually forgetting older information.</p>
+</section>
+<section id="adam" class="level3">
+<h3 class="anchored" data-anchor-id="adam">Adam</h3>
+<p>RMSProp solved the learning rate shrinking problem by using an exponentially decaying average of squared gradients. However, there is a subtle issue it fails to address. Imagine we have a “noisy” gradient in a non-convex zone such as: <span class="math display">\[
+\large g_t \in \{-0.9,\ +1.0,\ -0.8,\ +1.1,\ \dots\}
+\]</span> RMSProp would only look at the magnitude of the gradients, so <span class="math inline">\(G_t\)</span> would be: <span class="math display">\[
+\large G_t \in \{+0.81,\ +1.81,\ +2.45,\ +3.66,\ \dots\}
+\]</span> According to the logic of RMSProp, such a history suggests that significant updates have already been made, so it lowers the effective learning rate accordingly. However, the fact that the magnitude of the gradients are big and the signs are not consistent could be an indicator that we are not close to a minimum, but rather in a region with bumps or high-frequency noise in the loss surface. This is often the case when using mini-batches instead of the full dataset. RMSProp only uses the magnitude of the gradients, it has no way to detect this directional inconsistency.</p>
+<p>This is where Adam steps in. It incorporates a running average for both the squared gradients (like RMSProp) and the gradients themselves. This way, Adam can simultaneously adapt the learning rate and track the overall direction of the descent, enabling it to perform better in noisy regions.</p>
+<p>We define 4 new terms:</p>
+<ul>
+<li><span class="math inline">\(m_t\)</span>: exponential moving average of <span class="math inline">\(g_t\)</span></li>
+<li><span class="math inline">\(v_t\)</span>: exponential moving average of <span class="math inline">\(g^2_t\)</span></li>
+<li><span class="math inline">\(\beta_1, \beta_2\)</span>: decay factors</li>
+</ul>
+<p>Both <span class="math inline">\(m_t\)</span> and <span class="math inline">\(v_t\)</span> are updated as follows: <span class="math display">\[
+\large m_t=\beta_1 ·m_{t-1} + (1-\beta_1)·g_t
+\]</span> <span class="math display">\[
+\large v_t=\beta_2 ·v_{t-1} + (1-\beta_2)·g^2t
+\]</span></p>
+<p>Since <span class="math inline">\(m_t\)</span> and <span class="math inline">\(v_t\)</span> are initialized to zero, we define: <span class="math display">\[
+\large \hat{m}_t=\frac{m_t}{1-\beta_1}
+\]</span> <span class="math display">\[
+\large \hat{v}_t=\frac{v_t}{1-\beta_2}
+\]</span></p>
+<p>We are now ready to compute the update rule for Adam: <span class="math display">\[
+\large \theta_{t+1}=\theta_t +\eta·\frac{\hat{m}_t}{\sqrt{\hat{v}_t}+\epsilon}
+\]</span></p>
+<p>This balance of directionality and adaptive learning rate makes Adam a robust choice for many modern deep learning tasks.</p>
+</section>
+</section>
+<section id="comparing-the-optimizers" class="level1">
+<h1>Comparing the optimizers</h1>
+<p>Even though it is important to have a solid grasp of the theory, one must be able to quickly detect the problems when working in a real scenario. To connect theory with practice, we are going to run a simple example on a loss function.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="..\images/optimizer_animation.gif" class="img-fluid figure-img"></p>
+<figcaption>animation</figcaption>
+</figure>
+</div>
+<p>The table below summarizes the main pros and cons of each optimizer:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 41%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Optimizer</strong></th>
+<th style="text-align: center;"><strong>Pros</strong></th>
+<th style="text-align: center;"><strong>Cons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">AdaGrad</td>
+<td style="text-align: center;">Adapts <span class="math inline">\(\eta\)</span> for each parameter. Useful for sparse features.</td>
+<td style="text-align: center;"><span class="math inline">\(\eta\)</span> can be reduced too quickly.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">RMSProp</td>
+<td style="text-align: center;">More stable <span class="math inline">\(\eta\)</span> update than AdaGrad.</td>
+<td style="text-align: center;">Doesn’t take gradient’s direction into account.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Adam</td>
+<td style="text-align: center;">Combines advantages of RMSProp and momentum.</td>
+<td style="text-align: center;">May lead to overfitting. Sensitive to <span class="math inline">\(\eta\)</span> and default hyperparameters.</td>
+</tr>
+</tbody>
+</table>
+<p>In practice, no optimizer is universally best. Understanding their strengths and weaknesses is key to unlocking the model’s full potential.</p>
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1748371334220" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/index.html" class="no-external">Posts</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/index.html" class="no-external">
-An intuitive introduction to optimization algorithms like AdaGrad, RMSProp and Adam.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/index.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="b3B0aW1pemF0aW9uJTJDZGVlcCUyMGxlYXJuaW5nJTJDJUYwJTlGJTlGJUEyYmVnaW5uZXI=" data-listing-file-modified-sort="1748594644198" data-listing-reading-time-sort="9" data-listing-word-count-sort="1675">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/optimizers.html" class="no-external">How Do Neural Networks Learn?</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/optimizers.html" class="no-external">
-<p>An intuitive introduction to optimization algorithms like AdaGrad, RMSProp and Adam.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/optimizers.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="ZGVlcC1sZWFybmluZyUyQyVGMCU5RiU5RiVBMW1lZGl1bQ==" data-listing-file-modified-sort="1748594350913" data-listing-reading-time-sort="3" data-listing-word-count-sort="569">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/xavier-initialization.html" class="no-external">Why Neural Networks Forget</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/xavier-initialization.html" class="no-external">
-<p>The Vanishing Gradient Problem Explained</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/xavier-initialization.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

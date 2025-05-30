@@ -4,22 +4,14 @@ title: "Why Neural Networks Forget"
 description: "The Vanishing Gradient Problem Explained"
 format: html
 categories: [deep-learning, 🟡medium]
-title-block-banner: false
 ---
 
-# Vanishing gradients 
+# Why Neural Networks Forget: The Vanishing Gradient Problem Explained 
 
 Neural networks adjust their parameters through the well-known backpropagation algorithm. The cost function gradients are propagated from the output layer back to all layers of the model, enabling parameter updates. The network’s training depends on gradients being properly propagated. If the gradients fail to reach the earlier layers, the network won’t train as expected. Can something like this actually happen? Let’s see a practical example. 
 
 Consider a layer with a sigmoid activation function. From basic calculus, we know that 
-$\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))$ reaches its maximum value of 0.25 at $x=0$, and is zero when $\sigma(x)$ saturates at 0 or 1. For more clarity, the following plot shows both the sigmoid function and its derivative.
-
-<div style="text-align: center;">
-  <img src="../images/sigmoid_derivative.png" alt="Logo" width="500"/>
-</div>
-
-
-To update the weights of this layer, we need to compute $\large \frac{\partial L}{\partial W^{(L)}}$, which by the chain rule is: 
+$\large \frac{d\sigma(x)}{dx}=\sigma(x)(1-\sigma(x))$ reaches its maximum value of 0.25 at $x=0$, and is zero when $\sigma(x)$ saturates at 0 or 1. To update the weights of this layer, we need to compute $\large \frac{\partial L}{\partial W^{(L)}}$, which by the chain rule is: 
 $$ 
 \large \frac{\partial L}{\partial W^{(L)}}=\frac{\partial z^{(L)}}{\partial W^{(L)}}\frac{\partial a^{(L)}}{\partial z^{(L)}}\frac{\partial L}{\partial a^{(L)}}
 $$
@@ -36,11 +28,9 @@ One commonly overlooked detail when training a neural network is weight initiali
 # The Xavier Initialization solution 
 
 If initializing with zeros, Gaussian, or uniform distributions is problematic, what’s the solution? Fortunately, Xavier Glorot and Yoshua Bengio proposed one in 2010. In their paper _Understanding the Difficulty of Training Deep Feedforward Neural Networks_, they introduced what we now call **Xavier Initialization**. 
-
 ### Notation 
 
 Let $s_{i}=z_{i}W_{i}+b_{i}$ be the pre-activation, so $z_{i+1}=f(s_{i})$. The analysis focuses near the origin, where the sigmoid behaves approximately linearly $\sigma(x)\approx x$ and $\sigma'(x)\approx 1$. The goal is to keep the variance of $z_{i+1}$ (forward pass) and the variance of gradients (backward pass) of the same order in every layer.
-
 ### Forward Pass 
 
 We write $s_{i}=\sum_{j=1}^n z_{j}^{i} w_{i}^{j}$, assuming all $w_{i}^{j}$ are independent with zero mean and variance $\text{Var}[w_{i}]$, and similarly for $w_{j}^{i}$. Then: 
@@ -51,21 +41,17 @@ Near the origin, $\large \text{Var}[z_{i+1}]\approx \text{Var}[S_{i}]$, so we wa
 $$
 \large \mathrm{Var}[z_{i+1}] \approx \mathrm{Var}[z_i] \Rightarrow n_i \cdot \mathrm{Var}[z_i] \cdot \mathrm{Var}[w_i] \approx \mathrm{Var}[z_i] \Rightarrow n_i \cdot \mathrm{Var}[w_i] \approx 1
 $$
-
 ### Backward Pass 
 
 To compute the gradient $\large \delta_{i}=\frac{\partial L}{\partial s_{i}}$, we use the chain rule and the linear approximation $\large \delta_{i} \approx W_{i+1}^{T}\delta_{i+1}$. Therefore: 
 $$
 \mathrm{Var}[\delta_i] \approx n_{i+1} \cdot \mathrm{Var}[W_i] \cdot \mathrm{Var}[\delta_{i+1}] \Rightarrow n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1
 $$
-
 ### A balanced solution 
 
 We now have two desired conditions: 
-
 - $n_i \cdot \mathrm{Var}[w_i] \approx 1$ 
 - $n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1$ 
-
 If $n_{i}=n_{i+1}$, both are satisfied. When not, Glorot and Bengio propose a compromise: 
 $$
 \large \text{Var}[W_{i}]=\frac{2}{n_{i}+n_{i+1}}
@@ -82,5 +68,4 @@ $$
 ---
 
 ### References 
-
 - Xavier Glorot, Yoshua Bengio, _Understanding the Difficulty of Training Deep Feedforward Neural Networks_, 2010.
