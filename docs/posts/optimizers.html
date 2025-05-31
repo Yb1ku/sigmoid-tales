@@ -194,7 +194,7 @@ window.Quarto = {
 
 <section id="how-do-neural-networks-learn" class="level1">
 <h1>How do Neural Networks learn?</h1>
-<p>Training a neural network has never been easier. You define the architecture with <code>Keras</code> (or <code>PyTorch</code>, if you know what’s good), set the optimizer and run the <code>model.train</code> command. Many times, most people don’t pay attention to the optimizer. Most people simply choose Adam and start the training without questioning if it’s the right choice. However, as you get involved with architectures a bit more complex than the classical feed-forward neural network for the MNIST digits dataset, you may come across quite a frustrating situation: after a few epochs, the model won’t improve the loss metric. And maybe (just maybe) the reason could be the optimizer you are using.</p>
+<p>Training a neural network has never been easier. You define the architecture with <code>Keras</code> (or <code>PyTorch</code>, if you know what’s good), set the optimizer and run the <code>model.train</code> command. Many times, most people (myself included) don’t pay attention to the optimizer. They simply choose Adam and start the training without questioning if it’s the right choice . Despite Adam is the default choice for many people, it is good to know why it is considered one of the best optimizers out there. To fully understand Adam, one needs to start with the basics: <strong>gradient descent</strong>.</p>
 <section id="gradient-descent-how-to-learn-from-mistakes" class="level3">
 <h3 class="anchored" data-anchor-id="gradient-descent-how-to-learn-from-mistakes">Gradient descent: how to learn from mistakes</h3>
 <p>So, how exactly does a neural network learn from its mistakes? The answer lies in one of the simplest yet powerful ideas in optimization: <strong>gradient descent</strong>.</p>
@@ -326,7 +326,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>In practice, no optimizer is universally best. Understanding their strengths and weaknesses is key to unlocking the model’s full potential.</p>
+<p>In practice, no optimizer is universally best. Understanding their strengths and weaknesses is key to unlocking the model’s full potential. After reading this post, at least you will know why Adam is the default choice for everyone!</p>
 
 
 </section>

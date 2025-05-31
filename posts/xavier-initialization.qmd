@@ -28,9 +28,11 @@ One commonly overlooked detail when training a neural network is weight initiali
 # The Xavier Initialization solution 
 
 If initializing with zeros, Gaussian, or uniform distributions is problematic, what’s the solution? Fortunately, Xavier Glorot and Yoshua Bengio proposed one in 2010. In their paper _Understanding the Difficulty of Training Deep Feedforward Neural Networks_, they introduced what we now call **Xavier Initialization**. 
+
 ### Notation 
 
 Let $s_{i}=z_{i}W_{i}+b_{i}$ be the pre-activation, so $z_{i+1}=f(s_{i})$. The analysis focuses near the origin, where the sigmoid behaves approximately linearly $\sigma(x)\approx x$ and $\sigma'(x)\approx 1$. The goal is to keep the variance of $z_{i+1}$ (forward pass) and the variance of gradients (backward pass) of the same order in every layer.
+
 ### Forward Pass 
 
 We write $s_{i}=\sum_{j=1}^n z_{j}^{i} w_{i}^{j}$, assuming all $w_{i}^{j}$ are independent with zero mean and variance $\text{Var}[w_{i}]$, and similarly for $w_{j}^{i}$. Then: 
@@ -41,17 +43,21 @@ Near the origin, $\large \text{Var}[z_{i+1}]\approx \text{Var}[S_{i}]$, so we wa
 $$
 \large \mathrm{Var}[z_{i+1}] \approx \mathrm{Var}[z_i] \Rightarrow n_i \cdot \mathrm{Var}[z_i] \cdot \mathrm{Var}[w_i] \approx \mathrm{Var}[z_i] \Rightarrow n_i \cdot \mathrm{Var}[w_i] \approx 1
 $$
+
 ### Backward Pass 
 
 To compute the gradient $\large \delta_{i}=\frac{\partial L}{\partial s_{i}}$, we use the chain rule and the linear approximation $\large \delta_{i} \approx W_{i+1}^{T}\delta_{i+1}$. Therefore: 
 $$
 \mathrm{Var}[\delta_i] \approx n_{i+1} \cdot \mathrm{Var}[W_i] \cdot \mathrm{Var}[\delta_{i+1}] \Rightarrow n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1
 $$
+
 ### A balanced solution 
 
 We now have two desired conditions: 
+
 - $n_i \cdot \mathrm{Var}[w_i] \approx 1$ 
 - $n_{i+1} \cdot \mathrm{Var}[W_i] \approx 1$ 
+
 If $n_{i}=n_{i+1}$, both are satisfied. When not, Glorot and Bengio propose a compromise: 
 $$
 \large \text{Var}[W_{i}]=\frac{2}{n_{i}+n_{i+1}}
@@ -64,6 +70,8 @@ This yields the final Xavier Initialization:
 $$
 \Large W_{i}=\mathcal{U}[-\sqrt{\frac{6}{n_{i}+n_{i+1}}},+\sqrt{\frac{6}{n_{i}+n_{i+1}}}] 
 $$
+
+Initializing the parameters according to the equation above will likely solve the vanishing gradient problem. However, all this math is done assuming you have a sigmoid activation function. What about ReLU? That deserves an article for its own. 
 
 ---
 

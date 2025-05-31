@@ -8,7 +8,7 @@ image: /images/optimizer_animation.gif
 
 # How do Neural Networks learn? 
 
-Training a neural network has never been easier. You define the architecture with `Keras`  (or `PyTorch`, if you know what's good), set the optimizer and run the `model.train` command. Many times, most people don't pay attention to the optimizer. Most people simply choose Adam and start the training without questioning if it's the right choice. However, as you get involved with architectures a bit more complex than the classical feed-forward neural network for the MNIST digits dataset, you may come across quite a frustrating situation: after a few epochs, the model won't improve the loss metric. And maybe (just maybe) the reason could be the optimizer you are using. 
+Training a neural network has never been easier. You define the architecture with `Keras`  (or `PyTorch`, if you know what's good), set the optimizer and run the `model.train` command. Many times, most people (myself included) don't pay attention to the optimizer. They simply choose Adam and start the training without questioning if it's the right choice . Despite Adam is the default choice for many people, it is good to know why it is considered one of the best optimizers out there. To fully understand Adam, one needs to start with the basics: **gradient descent**. 
 
 ### Gradient descent: how to learn from mistakes 
 
@@ -139,4 +139,4 @@ The table below summarizes the main pros and cons of each optimizer:
 |    RMSProp    |            More stable $\eta$ update than AdaGrad.            |              Doesn't take gradient's direction into account.               |
 |     Adam      |         Combines advantages of RMSProp and momentum.          | May lead to overfitting. Sensitive to $\eta$ and default hyperparameters.  |
 
-In practice, no optimizer is universally best. Understanding their strengths and weaknesses is key to unlocking the model's full potential. 
+In practice, no optimizer is universally best. Understanding their strengths and weaknesses is key to unlocking the model's full potential. After reading this post, at least you will know why Adam is the default choice for everyone! 

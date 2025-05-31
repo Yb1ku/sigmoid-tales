@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9964587863725957",
+        "id": "da68f733c6088785",
         "type": "tabs",
         "children": [
           {
-            "id": "c6a92287479e94d9",
+            "id": "4f06587e20d1d361",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -74,8 +74,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 209.5,
-    "collapsed": true
+    "width": 209.5
   },
   "right": {
     "id": "df919f6e2604b68b",
@@ -162,37 +161,32 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "c6a92287479e94d9",
+  "active": "4f06587e20d1d361",
   "lastOpenFiles": [
     "docs/listings.json",
     "docs/search.json",
-    "docs/images/logo.png",
-    "docs/images/optimizer_animation.gif",
     "docs/images/overshooting.png",
+    "docs/images/optimizer_animation.gif",
+    "docs/images/logo.png",
     "docs/images/gradient_descent.png",
     "docs/images",
     "docs/site_libs/quarto-html/tabsets/tabsets.js",
-    "docs/site_libs/quarto-nav/quarto-nav.js",
-    "docs/site_libs/quarto-nav/headroom.min.js",
     "docs/site_libs/quarto-search/quarto-search.js",
     "docs/site_libs/quarto-search/fuse.min.js",
     "docs/site_libs/quarto-search/autocomplete.umd.js",
+    "docs/site_libs/quarto-nav/quarto-nav.js",
+    "docs/site_libs/quarto-nav/headroom.min.js",
     "docs/site_libs/quarto-listing/quarto-listing.js",
     "docs/site_libs/quarto-listing/list.min.js",
+    "posts/xavier-initialization.md",
+    "posts/optimizers.md",
+    "posts/index.md",
     "drafts/optimizers.md",
     "Sin título.md",
     "images/overshooting.png",
     "docs/images/sigmoid_derivative.png",
-    "posts/xavier-initialization.md",
-    "posts/optimizers.md",
     "images/gradient_descent.png",
     "images/sigmoid_derivative.png",
     "README.md",
-    "posts/index.md",
     "images/logo.png",
-    "images/ChatGPT Image 27 may 2025, 20_45_32.png",
-    "index.md",
-    "posts/xavier-initialization.qmd.md",
-    "posts/Xavier Initialization.md"
-  ]
-}
+    "images/ChatGPT Image 27 
