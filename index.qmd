@@ -18,9 +18,11 @@ listing:
 Welcome to the Sigmoid Tales — a curated collection of technical yet accessible essays on Machine Learning & Deep Learning. Whether you're just starting or brushing up on foundational concepts, this repository aims to clarify complex ideas through clear writing, visual intuition and well-grounded mathematics. 
 
 > 🚧 **Work in Progress**
+>
 >This project is a living document. New articles will be added over time. 
 
-> ** Learning by doing project 
+> **Learning by doing project** 
+>
 > I'm writing this as a way to learn, so you will probably encounter some mistakes. Think of this blog as my way to learn. 
 
 ## Overview of the project 
