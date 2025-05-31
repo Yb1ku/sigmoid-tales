@@ -23,7 +23,7 @@ Welcome to the Sigmoid Tales — a curated collection of technical yet accessibl
 
 > **Learning by doing project** 
 >
-> I'm writing this as a way to learn, so you will probably encounter some mistakes. Think of this blog as my way to learn. 
+> I'm writing this as a way to learn, so you will probably encounter some mistakes. 
 
 ## Overview of the project 
 
